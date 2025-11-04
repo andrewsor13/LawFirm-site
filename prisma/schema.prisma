@@ -1,0 +1,135 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model posts {
+  id        Int        @id @default(autoincrement())
+  title     String
+  slug      String     @unique
+  imageUrl  String?
+  content   String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  comments  comments[]
+  images    images[]
+}
+
+model comments {
+  id         Int        @id @default(autoincrement())
+  isAccepted Boolean    @default(false)
+  name       String
+  content    String
+  postId     Int
+  createdAt  DateTime   @default(now())
+  parentId   Int?
+  parent     comments?  @relation("CommentReplies", fields: [parentId], references: [id])
+  replies    comments[] @relation("CommentReplies")
+  post       posts      @relation(fields: [postId], references: [id])
+
+  @@index([isAccepted, postId])
+}
+
+model admin_users {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  role      String
+  createdAt DateTime @default(now())
+  name      String
+}
+
+model clients {
+  id         Int         @id @default(autoincrement())
+  name       String
+  email      String
+  phone      String
+  message    String
+  createdAt  DateTime    @default(now())
+  isReviewed Boolean     @default(false)
+  documents  documents[]
+}
+
+model documents {
+  id        Int      @id @default(autoincrement())
+  fileName  String
+  fileLink  String
+  createdAt DateTime @default(now())
+  clientId  Int
+  client    clients  @relation(fields: [clientId], references: [id])
+}
+
+
+model legal_domain {
+  id                  Int      @id @default(autoincrement())
+  title               String
+  slug                String   @unique
+  icon                String
+  description         String
+  blogOnlyDescription String?
+  detailedDescription String?
+  blogOnlyDetailedDescription String?
+  imagePath           String?
+  faqImage            String?
+  services            String[]
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  faqs                faq[]
+}
+
+model faq {
+  id        Int           @id @default(autoincrement())
+  question  String
+  domainId  Int?
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  author    String?
+  email     String?
+  html      String?
+  text      String?
+  slug      String?        @unique
+  domain    legal_domain? @relation(fields: [domainId], references: [id])
+  isPublished Boolean @default(false)
+
+}
+
+model Contact {
+  id        Int      @id @default(1)
+  phone     String
+  email     String
+  address   String
+  mapEmbed  String?
+  updatedAt DateTime @updatedAt
+}
+
+model images {
+  id        Int      @id @default(autoincrement())
+  url       String
+  alt       String?
+  postId    Int
+  createdAt DateTime @default(now())
+  post      posts    @relation(fields: [postId], references: [id])
+}
+
+model About {
+  id          Int      @id @default(autoincrement())
+  name        String
+  photo       String?
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  photoName   String?
+}
+
+model SiteSettings {
+  id        String   @id @default("singleton")
+  blogMode  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("site_settings")
+}
