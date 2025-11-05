@@ -122,9 +122,12 @@ export default function SiteSettings() {
               </p>
             </div>
             <p className="text-sm leading-relaxed">
-              Site-ul funcționează în regim de <strong>conținut limitat</strong>
-              . Utilizatorii pot citi articolele, însă funcțiile interactive
-              (contact, autentificare, etc.) sunt dezactivate temporar.
+              Site-ul funcționează în regim de{" "}
+              <strong>conținut de tip blog</strong>. Utilizatorii pot citi
+              articolele, pot pune o întrebare, dar sunt eliminate toate
+              sugestiile prin care avocatul ar oferi servicii juridice. De
+              asemenea formularul de contact este înlocuit de cel pentru
+              întrebare. Datele de contact dispar cu exceptia email-ului.
             </p>
           </>
         ) : (
@@ -137,7 +140,7 @@ export default function SiteSettings() {
             </div>
             <p className="text-sm leading-relaxed">
               Site-ul este <strong>complet activ</strong>, inclusiv formularele
-              și dashboard-ul.
+              de contact.
             </p>
           </>
         )}
