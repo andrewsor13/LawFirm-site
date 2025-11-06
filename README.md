@@ -24,5 +24,11 @@ Includes features to categorize, respond to, and archive client messages for eff
 For testing, you can acces the admin panel from the homepage by adding /admin to the url path.
 
 For authentification use :
+
+Admin
 email: admin@gmail.com
-pass:  admin
+pass: admin
+
+Editor
+email: editor@gmail.com
+pass: editor
