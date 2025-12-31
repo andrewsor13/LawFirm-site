@@ -12,7 +12,7 @@ export default function ValuesMobile() {
       {isActive ? (
         <motion.p variants={child} className="text-xl/10">
           Numele meu este{" "}
-          <span className="font-bold">Gogoloș Alexandra-Loredana</span>. Sunt
+          <span className="font-bold">Nume Avocat</span>. Sunt
           avocat în Baroul București și împărtășesc prin acest blog experiența
           și cunoștințele mele din domeniul juridic. Cred că legea devine cu
           adevărat utilă atunci când este înțeleasă, iar scopul meu este să ofer
@@ -22,7 +22,7 @@ export default function ValuesMobile() {
       ) : (
         <motion.p variants={child} className="text-xl/10">
           Numele meu este{" "}
-          <span className="font-bold">Gogoloș Alexandra-Loredana</span>. Sunt
+          <span className="font-bold">Nume Avocat</span>. Sunt
           avocat în Baroul București și cred că fiecare caz merită implicare
           reală și o soluție clară, adaptată nevoilor clientului. Lucrez cu
           atenție și seriozitate în toate domeniile dreptului și pun accent pe
