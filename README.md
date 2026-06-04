@@ -20,15 +20,3 @@ Client Management and Contact System
 Interactive contact form connected to the dashboard for managing client inquiries in real time.
 
 Includes features to categorize, respond to, and archive client messages for efficient follow-up.
-
-For testing, you can acces the admin panel from the homepage by adding /admin to the url path.
-
-For authentification use :
-
-Admin
-email: admin@gmail.com
-pass: admin
-
-Editor
-email: editor@gmail.com
-pass: editor

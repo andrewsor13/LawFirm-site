@@ -45,3 +45,9 @@ next-env.d.ts
 google-service-account.json
 
 createPages.ts
+
+.env
+.env.local
+*.pem
+*service-account*.json
+google-service-account.json
